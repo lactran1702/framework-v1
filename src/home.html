@@ -1,0 +1,54 @@
+<!doctype html>
+<html class="no-js" lang="">
+  
+@@include('common/head.html')
+
+<body>
+    <header>
+        <!-- Thường chứa LOGO, MENU NAVIGATION,... -->
+        @@include('common/menu.html')
+    </header>
+
+    <!-- Your HTML here -->
+    <main id="pHome">
+        <div class="sample helper-centerbox">Something goes here!</div>
+    </main>
+
+    <footer>
+        <!-- Chứa footer -->
+        <span>Footer goes here</span>
+    </footer>
+
+    <!-- Chứa các POPUP của website, phân biệt với nhau bằng class -->
+    <!-- POPUP này được control (show/hide) bởi "main.js" -->
+    <!-- 
+        // Mở popup có class "register": 
+        POPUP.show("register"); 
+        // hoặc:
+        POPUP.show("register", callback);
+        
+        Tắt tất cả popup: 
+        POPUP.hide();
+    -->
+    <div id="popup" class="helper-hide">
+        <div class="holder helper-centerbox register">ABC</div>
+        <div class="holder helper-centerbox login">DEF</div>
+    </div>
+
+    <!-- Default PRELOADER with rotating circle -->
+    <!-- Được control bởi: main.js -->
+    <!-- PRELOADER.show() -->
+    <!-- PRELOADER.hide() -->
+    <div id="preloader" class="helper-hide">
+        <div class="loader helper-centerbox">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 2 default Javascript files -->
+    <script src="js/main.js"></script> <!-- của FrontEnd -->
+    <script src="js/function.js"></script> <!-- của BackEnd -->
+</body>
+</html>

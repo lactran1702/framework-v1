@@ -1,0 +1,70 @@
+// MEDIUM DESKTOP 1280x800
+@media screen and (min-height: 800px) {
+  
+}
+
+// LARGE DESKTOP 1440x900
+@media screen and (min-height: 900px) {
+
+}
+
+// SUPER LARGE DESKTOP 1920x1080
+@media screen and (min-height: 901px) {
+
+}
+
+// MINI LAPTOP
+@media screen and (min-height: 600px) and (max-height: 649px) {
+  
+}
+
+// BELOW MINI LAPTOP 1280//1200//1180
+@media screen and (max-width: 1180px) {
+
+}
+
+// IPAD LANDSCAPE 1024x768
+@media screen and (max-width: 1024px) {
+
+}
+
+// IPAD PORTRAIT 768x1024
+@media screen and (max-width: 1023px) {
+
+
+}
+
+// IPAD PORTRAIT 768x1024 WITH orientation
+@media screen and (max-width: 768px) and (orientation: portrait) {
+  
+}
+
+
+// IPAD PORTRAIT 768x1024 WITH orientation
+@media screen and (max-width: 768px) {
+  
+}
+
+// IPHONE 6+ LANDSCAPE 736x414 WITH orientation
+@media screen and (max-width: 736px) and (orientation: landscape) {
+
+}
+
+// IPHONE 6+ LANDSCAPE 736x414 AND BELOW
+@media screen and (max-width: 767px) {
+
+}
+
+// IPHONE 6+ PORTRAIT 414x736
+@media screen and (max-width: 480px) {
+   
+}
+
+// IPHONE 6+ PORTRAIT 414x736 WITH orientation
+// @media screen and (max-width: 480px) and (orientation: portrait) {
+// }
+
+// IPHONE 5 PORTRAIT 320x568
+@media screen and (max-width: 320px) {
+
+}

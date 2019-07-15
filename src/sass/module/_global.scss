@@ -1,0 +1,286 @@
+// ALL MIXIN ARRANGED FROM POPULAR TO BARELY USE
+
+
+@mixin inline-block ($vertical-align: middle) {
+  display: inline-block;
+  vertical-align: $vertical-align;
+}
+
+// Center object have Width or Height or have both
+@mixin marginCenter($horizontal: true, $vertical: true) {
+  position: absolute;
+
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+  }
+
+  @else if ($horizontal) {
+    left: 50%;
+  }
+
+  @else if ($vertical) {
+    top: 50%;
+  }
+}
+
+// Center object without Width & Height
+@mixin absoluteCenter($horizontal: true, $vertical: true) {
+
+  position: absolute;
+
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50% ,0);
+
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate3d(-50%, 0 ,0);
+
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate3d(0, -50% ,0);
+  }
+
+}
+
+// To cover an object
+@mixin ovl ($width: 100%) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $width;
+  height: 100%;
+}
+
+// Clear translate3d
+@mixin clearpos {
+  position: relative;
+  top: auto;
+  left: auto;
+  bottom: auto;
+  right: auto;
+  transform: translate3d(0, 0 ,0);
+}
+
+// Pseudo for ::before & ::after
+@mixin pseudo ($display: block, $content: '') {
+  content: $content;
+  display: $display;
+}
+
+// Placeholders
+@mixin input-placeholder {
+  // &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+
+// CUSTOM SCROLLBAR
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+      width:  $size;
+      height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: $background-color;
+  }
+
+  // For Internet Explorer
+  // body {
+    // scrollbar-face-color: $foreground-color;
+    // scrollbar-track-color: $background-color;
+  // }
+}
+
+// TEXT SHADOW
+@mixin text-shadow ($string: 0 1px 3px rgba(0, 0, 0, 0.25)) {
+  text-shadow: $string;
+}
+
+// DROP SHADOW
+@mixin box-shadow ($x: 0, $y: 1px, $blur: 2px, $spread: 0, $alpha: 0.25) {
+  box-shadow: $x $y $blur $spread rgba(0, 0, 0, $alpha);
+}
+
+@mixin animation ($name, $duration: 300ms, $delay: 0, $ease: ease) {
+  // -webkit-animation: $name $duration $delay $ease;
+  // -moz-animation: $name $duration $delay $ease;
+  // -ms-animation: $name $duration $delay $ease;
+  animation: $name $duration $delay $ease;
+}
+
+
+
+// TIPS
+// instead of
+// &:last-child {border-right: transparent}
+// use
+// &:not(:last-child) {border-right: 1px}
+
+
+
+
+// NOT UNDERSTAND YET
+@mixin rowMachine($numPerRow, $margin) {
+  width: ((100% - (($numPerRow - 1) * $margin)) / $numPerRow);
+  &:nth-child(n) {
+    margin-bottom: $margin;
+    margin-right: $margin;
+  }
+  &:nth-child(#{$numPerRow}n) {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
+
+@mixin clearfix($extend: true) {
+  @if $extend {
+    @extend %clearfix;
+  } @else {
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+}
+
+%clearfix {
+  @include clearfix($extend: false);
+}
+
+////////////    TESTING OUT PUTTIN MIXIN INTO CLASS OR ID    ///////////////
+
+// .dgt_cl {
+//   clear: both;
+//   overflow: hidden;
+// }
+
+// .checkbox,
+// .radio {
+//   width: 25px;
+//   height: 25px;
+//   background: url(../images/checkbox.png) no-repeat;
+//   display: inline-block;
+
+// }
+
+// .radio {
+//   background: url(../images/radio.png) no-repeat;
+//   cursor: pointer;
+// }
+
+////////////////   DEFAULT CLASSES ////////////////////
+
+// .align-center {
+//   text-align: center;
+// }
+
+// .align-left {
+//   text-align: left;
+// }
+
+// .align-right {
+//   text-align: right;
+// }
+
+// .align-justify {
+//   text-align: justify;
+// }
+
+// .white-space {
+//   white-space: nowrap;
+// }
+
+// .default {
+//   background: #999;
+// }
+
+// .primary {
+//   background: #1f2740;
+// }
+
+// .success {
+//   background: #70c1b3;
+// }
+
+// .info {
+//   background: #b2dbbf;
+// }
+
+// .warning {
+//   background: #eeffa4;
+// }
+
+// .danger {
+//   background: #eb547c;
+// }
+
+// .text-primary {
+//   color: #1f2740;
+// }
+
+// .text-success {
+//   color: #70c1b3;
+// }
+
+// .text-info {
+//   color: #b2dbbf;
+// }
+
+// .text-warning {
+//   color: #eeffa4;
+// }
+
+// .text-danger {
+//   color: #eb547c;
+// }
+
+
+
+// input[type="text"],
+// input[type="password"] {
+
+//   background: #f4f4f4;
+//   line-height: 1;
+//   font-size: 15px;
+//   color: #000;
+//   width: 100%;
+//   padding: 5px 20px 0 20px;
+//   border: none;
+//   height: 32px;
+
+//   // &:focus::-webkit-input-placeholder {
+//   //   opacity: 0;
+//   // }
+
+// }
+
+input[type="text"]::selection,
+input[type="password"]::selection,
+textarea::selection {
+  background: #ededed;
+  text-shadow: none;
+
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
+  border:0;
+  background:none;
+}
+
+
+// ANIMATION KEYFRAMES

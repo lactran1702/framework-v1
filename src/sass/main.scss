@@ -1,0 +1,42 @@
+/*# sourceMappingURL=main.css.map */
+
+// General imports ------------------------------------------------------------
+//
+// These imports don't generate CSS, but make defined variables, functions,
+// and mixins available for further usage
+/** Locale Setting **/
+$locale: 'en';
+
+@import 'base/config_global';
+@import 'base/config_site';
+
+/** Vendor **/
+@import 'vendor/bourbon/bourbon';
+@import 'vendor/neat/neat';
+
+/** Partials **/
+@import 'partials/normalize';
+@import 'partials/base';
+@import 'partials/buttons';
+@import 'partials/forms';
+@import 'partials/links';
+@import 'partials/lists';
+@import 'partials/tables';
+@import 'partials/typography';
+@import 'partials/helper';
+
+
+
+// Styles ---------------------------------------------------------------------
+@import 'module/global';
+@import 'module/pages';
+@import 'module/header';
+@import 'module/footer';
+@import 'module/responsive';
+
+// Print ----------------------------------------------------------------------
+//
+// Inline to avoid the request
+//@import 'module/print';
+
+

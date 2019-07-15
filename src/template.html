@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="">
+  
+@@include('common/head.html')
+
+<body>
+    <script>
+    // Mobile Safari in standalone mode
+    if(("standalone" in window.navigator) && window.navigator.standalone){
+    
+        // If you want to prevent remote links in standalone web apps opening Mobile Safari, change 'remotes' to true
+        var noddy, remotes = true;
+    
+        document.addEventListener('click', function(event) {
+    
+            noddy = event.target;
+    
+            // Bubble up until we hit link or top HTML element. Warning: BODY element is not compulsory so better to stop on HTML
+            while(noddy.nodeName !== "A" && noddy.nodeName !== "HTML") {
+                noddy = noddy.parentNode;
+            }
+    
+            if('href' in noddy && noddy.href.indexOf('http') !== -1 && (noddy.href.indexOf(document.location.host) !== -1 || remotes))
+            {
+                event.preventDefault();
+                document.location.href = noddy.href;
+            }
+    
+        },false);
+    }
+    </script>
+    <header>
+        <!-- Thường chứa LOGO, MENU NAVIGATION,... -->
+        @@include('common/menu.html')
+    </header>
+
+    <!-- Your HTML here -->
+    <main id="pHome">
+        <div class="sample " data-abc="123">
+            Something goes here!
+            <br/>Fix performance overloaded on Windows machine
+            <br/>Chúng tôi là những chữ được viết bằng Tiếng Việt đây!
+            <br/><a href="googlechrome://www.google.com" target="_blank">OPEN CHROME</a>
+            <br/><a href="x-web-search://?ABC" target="_blank">OPEN SAFARI</a>
+            <br/><a href="http://www.google.com" target="_external">OPEN SAFARI 2</a>
+            <br/><a href="#" id="safari-btn">May open on SAFARI</a>
+            <br/><a href="#" id="btn-upload">Browse upload</a>
+            <script>
+                var btn = document.getElementById("safari-btn");
+                btn.addEventListener("click", function(){
+                    window.open('https://www.facebook.com', '_system', 'location=yes');
+                });
+            </script>
+        </div>
+
+        <div class="imgContainer"></div>
+
+        <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="images/banner01.jpg"/>
+        <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="images/banner-1-c.png"/>
+        <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="images/honeymoon.svg"/>
+        <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="images/Gallery_Detail_Popup.png"/>
+    </main>
+
+    <footer>
+        <!-- Chứa footer -->
+        <span>Footer goes here</span>
+    </footer>
+
+    <!-- Chứa các POPUP của website, phân biệt với nhau bằng class -->
+    <!-- POPUP này được control (show/hide) bởi "main.js" -->
+    <!-- 
+        // Mở popup có class "register": 
+        POPUP.show("register"); 
+        // hoặc:
+        POPUP.show("register", callback);
+        
+        Tắt tất cả popup: 
+        POPUP.hide();
+    -->
+    <div id="popup" class="helper-hide">
+        <div class="holder helper-centerbox register">ABC</div>
+        <div class="holder helper-centerbox login">DEF</div>
+    </div>
+
+    <!-- Default PRELOADER with rotating circle -->
+    <!-- Được control bởi: /js/main.js -->
+    <!-- PRELOADER.show() -->
+    <!-- PRELOADER.hide() -->
+    <div id="preloader" class="helper-hide">
+        <div class="loader helper-centerbox">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- 2 default Javascript files -->
+    <script src="js/main.js" defer></script>
+</body>
+</html>
